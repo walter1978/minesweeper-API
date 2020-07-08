@@ -3,7 +3,7 @@ package com.minesweeper.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
-public class BoardDTO implements Serializable {
+public class BoardStatusDTO implements Serializable {
     private long boardId;
     private long userId;
     private Instant startTime;
@@ -12,11 +12,6 @@ public class BoardDTO implements Serializable {
     private long totalTime;
     private Status status;
     private boolean completed;
-    private int rows;
-    private int columns;
-    private int mines;
-    private int visibleCells;
-    private CellDTO cells[][];
 
     public long getBoardId() {
         return boardId;
@@ -80,45 +75,5 @@ public class BoardDTO implements Serializable {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
-    }
-
-    public int getRows() {
-        return rows;
-    }
-
-    public void setRows(int rows) {
-        this.rows = rows;
-    }
-
-    public int getColumns() {
-        return columns;
-    }
-
-    public void setColumns(int columns) {
-        this.columns = columns;
-    }
-
-    public int getMines() {
-        return mines;
-    }
-
-    public void setMines(int mines) {
-        this.mines = mines;
-    }
-
-    public int getVisibleCells() {
-        return visibleCells;
-    }
-
-    public void setVisibleCells(int visibleCells) {
-        this.visibleCells = visibleCells;
-    }
-
-    public CellDTO[][] getCells() {
-        return cells;
-    }
-
-    public void setCells(CellDTO[][] cells) {
-        this.cells = cells;
     }
 }

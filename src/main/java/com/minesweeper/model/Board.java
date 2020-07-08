@@ -1,9 +1,17 @@
-package com.minesweeper.dto;
+package com.minesweeper.model;
 
+import com.minesweeper.converter.CellsConverter;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.Objects;
 
-public class BoardDTO implements Serializable {
+@Entity
+@Table(name = "boards", indexes = {@Index(name = "user",  columnList="userId", unique = false)})
+public class Board implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long boardId;
     private long userId;
     private Instant startTime;
@@ -16,7 +24,9 @@ public class BoardDTO implements Serializable {
     private int columns;
     private int mines;
     private int visibleCells;
-    private CellDTO cells[][];
+    @Lob
+    @Convert(converter = CellsConverter.class)
+    private Cell cells[][];
 
     public long getBoardId() {
         return boardId;
@@ -114,11 +124,28 @@ public class BoardDTO implements Serializable {
         this.visibleCells = visibleCells;
     }
 
-    public CellDTO[][] getCells() {
+    public Cell[][] getCells() {
         return cells;
     }
 
-    public void setCells(CellDTO[][] cells) {
+    public void setCells(Cell[][] cells) {
         this.cells = cells;
+    }
+
+    public void updateTotalTime() {
+        totalTime = totalTime + ((Instant.now().toEpochMilli() - getLastTimePlayed().toEpochMilli()) / 1000);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Board board = (Board) o;
+        return boardId == board.boardId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(boardId);
     }
 }

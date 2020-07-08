@@ -1,9 +1,18 @@
 package com.minesweeper.dto;
 
 public class NewBoardRequestDTO {
+    private long userId;
     private int rows;
     private int columns;
     private int mines;
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 
     public int getRows() {
         return rows;
