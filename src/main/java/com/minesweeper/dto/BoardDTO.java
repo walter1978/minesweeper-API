@@ -2,6 +2,7 @@ package com.minesweeper.dto;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.Objects;
 
 public class BoardDTO implements Serializable {
     private long boardId;

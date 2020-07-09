@@ -12,45 +12,45 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
-public class MinesweeperController {
+@RequestMapping("/api/v1/boards")
+public class BoardsController {
     @Autowired
     private MinesweeperService minesweeperService;
 
-    @PostMapping("/boards")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public BoardDTO newBoard(@RequestBody NewBoardRequestDTO newBoardRequestDTO) {
         return minesweeperService.createNewBoard(newBoardRequestDTO);
     }
 
-    @GetMapping("/boards/{boardId}")
+    @GetMapping("/{boardId}")
     public BoardDTO getBoard(@PathVariable long boardId) {
         return minesweeperService.getBoard(boardId);
     }
 
-    @GetMapping("/boards/user/{userId}")
+    @GetMapping("/user/{userId}")
     public List<BoardStatusDTO> getUserBoard(@PathVariable long userId) {
         return minesweeperService.getUserBoards(userId);
     }
 
-    @PutMapping("/boards/status/paused/{boardId}")
+    @PutMapping("/status/paused/{boardId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void pauseGame(@PathVariable long boardId) {
-        minesweeperService.pause(boardId);
+        minesweeperService.pauseBoard(boardId);
     }
 
-    @PutMapping("/boards/status/canceled/{boardId}")
+    @PutMapping("/status/canceled/{boardId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void cancelGame(@PathVariable long boardId) {
-        minesweeperService.cancel(boardId);
+        minesweeperService.cancelBoard(boardId);
     }
 
-    @PutMapping("/boards/status/playing/{boardId}")
+    @PutMapping("/status/playing/{boardId}")
     public BoardDTO continueGame(@PathVariable long boardId) {
-        return minesweeperService.play(boardId);
+        return minesweeperService.playBoard(boardId);
     }
 
-    @PutMapping("/boards/cell")
+    @PutMapping("/cell")
     public BoardDTO updateCell(@RequestBody CellUpdateDTO cellUpdateDTO) {
         return minesweeperService.updateCell(cellUpdateDTO);
     }

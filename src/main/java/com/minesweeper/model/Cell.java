@@ -6,6 +6,8 @@ public class Cell implements Serializable {
     private boolean mine;
     private int minesAround;
     private boolean visible;
+    private boolean redFlag;
+    private boolean questionMark;
 
     public boolean isMine() {
         return mine;
@@ -29,5 +31,21 @@ public class Cell implements Serializable {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+    public boolean isRedFlag() {
+        return redFlag;
+    }
+
+    public void setRedFlag(boolean redFlag) {
+        this.redFlag = redFlag;
+    }
+
+    public boolean isQuestionMark() {
+        return questionMark;
+    }
+
+    public void setQuestionMark(boolean questionMark) {
+        this.questionMark = questionMark;
     }
 }

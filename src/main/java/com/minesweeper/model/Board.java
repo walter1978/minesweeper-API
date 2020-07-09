@@ -133,7 +133,32 @@ public class Board implements Serializable {
     }
 
     public void updateTotalTime() {
-        totalTime = totalTime + ((Instant.now().toEpochMilli() - getLastTimePlayed().toEpochMilli()) / 1000);
+        totalTime = totalTime + ((Instant.now().toEpochMilli() - lastTimePlayed.toEpochMilli()) / 1000);
+    }
+
+    public Cell getCell(int x, int y) {
+        return cells[x][y];
+    }
+
+    public void userWins() {
+        completed = true;
+    }
+
+    public void gameOver() {
+        endTime = Instant.now();
+        status = Status.FINISHED;
+    }
+
+    public boolean allCellsRevealed() {
+        return visibleCells == getTotalCells() - mines;
+    }
+
+    public void increaseVisibleCells() {
+        visibleCells++;
+    }
+
+    private int getTotalCells() {
+        return rows * columns;
     }
 
     @Override

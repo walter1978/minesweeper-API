@@ -1,9 +1,13 @@
 package com.minesweeper.dto;
 
-public class CellDTO {
+import java.io.Serializable;
+
+public class CellDTO implements Serializable {
     private boolean mine;
     private int minesAround;
     private boolean visible;
+    private boolean redFlag;
+    private boolean quotationMark;
 
     public boolean isMine() {
         return mine;
@@ -27,5 +31,21 @@ public class CellDTO {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+    public boolean isRedFlag() {
+        return redFlag;
+    }
+
+    public void setRedFlag(boolean redFlag) {
+        this.redFlag = redFlag;
+    }
+
+    public boolean isQuotationMark() {
+        return quotationMark;
+    }
+
+    public void setQuotationMark(boolean quotationMark) {
+        this.quotationMark = quotationMark;
     }
 }

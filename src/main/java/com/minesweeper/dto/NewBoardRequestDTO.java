@@ -1,6 +1,8 @@
 package com.minesweeper.dto;
 
-public class NewBoardRequestDTO {
+import java.io.Serializable;
+
+public class NewBoardRequestDTO implements Serializable {
     private long userId;
     private int rows;
     private int columns;

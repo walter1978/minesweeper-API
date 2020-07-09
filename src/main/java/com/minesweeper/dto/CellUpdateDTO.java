@@ -1,12 +1,11 @@
 package com.minesweeper.dto;
 
 import java.io.Serializable;
-import java.time.Instant;
 
-public abstract class CellUpdateDTO implements Serializable {
+public class CellUpdateDTO implements Serializable {
     private long boardId;
-    private String xPos;
-    private Instant yPos;
+    private int x;
+    private int y;
     private Action action;
 
     public long getBoardId() {
@@ -17,20 +16,20 @@ public abstract class CellUpdateDTO implements Serializable {
         this.boardId = boardId;
     }
 
-    public String getxPos() {
-        return xPos;
+    public int getX() {
+        return x;
     }
 
-    public void setxPos(String xPos) {
-        this.xPos = xPos;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public Instant getyPos() {
-        return yPos;
+    public int getY() {
+        return y;
     }
 
-    public void setyPos(Instant yPos) {
-        this.yPos = yPos;
+    public void setY(int y) {
+        this.y = y;
     }
 
     public Action getAction() {
