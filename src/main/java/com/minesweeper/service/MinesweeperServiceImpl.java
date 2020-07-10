@@ -13,6 +13,7 @@ import com.minesweeper.model.Cell;
 import com.minesweeper.model.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.List;
@@ -25,6 +26,7 @@ public class MinesweeperServiceImpl implements MinesweeperService {
     @Autowired
     private MinesweeperModelMapper modelMapper;
 
+    @Transactional
     @Override
     public BoardDTO createNewBoard(NewBoardRequestDTO newBoardRequestDTO) {
         final Instant currentTime = Instant.now();
@@ -55,6 +57,7 @@ public class MinesweeperServiceImpl implements MinesweeperService {
         return modelMapper.mapToBoardStatusDTOs(boards);
     }
 
+    @Transactional
     @Override
     public void pauseBoard(long boardId) {
         final Board board = loadBoard(boardId);
@@ -65,6 +68,7 @@ public class MinesweeperServiceImpl implements MinesweeperService {
         boardDAO.save(board);
     }
 
+    @Transactional
     @Override
     public void cancelBoard(long boardId) {
         final Board board = loadBoard(boardId);
@@ -75,6 +79,7 @@ public class MinesweeperServiceImpl implements MinesweeperService {
         boardDAO.save(board);
     }
 
+    @Transactional
     @Override
     public BoardDTO playBoard(long boardId) {
         final Board board = loadBoard(boardId);
@@ -91,6 +96,7 @@ public class MinesweeperServiceImpl implements MinesweeperService {
         return modelMapper.mapToBoardDTO(board);
     }
 
+    @Transactional
     @Override
     public BoardDTO updateCell(CellUpdateDTO cellUpdateDTO) {
         final Board board = loadBoard(cellUpdateDTO.getBoardId());
