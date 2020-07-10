@@ -29,7 +29,7 @@ public class BoardsController {
     }
 
     @GetMapping("/user/{userId}")
-    public List<BoardStatusDTO> getUserBoard(@PathVariable long userId) {
+    public List<BoardStatusDTO> getUserBoards(@PathVariable long userId) {
         return minesweeperService.getUserBoards(userId);
     }
 

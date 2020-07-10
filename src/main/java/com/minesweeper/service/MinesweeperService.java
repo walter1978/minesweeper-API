@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface MinesweeperService {
     /**
-     * Creates a new board ready for play
+     * Creates a new board ready to play
      *
      * @param newBoardRequestDTO board parameters
      * @return new board
