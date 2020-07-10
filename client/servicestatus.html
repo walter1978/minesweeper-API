@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="minesweeper-client.js"></script>
+    <head>
+        <meta charset="utf-8">
+        <title>Minesweeper</title>
+    </head>
+
+    <body>
+        <div>Service status</div>
+        <div id="status" style="font-weight: bold;"></div>
+
+        <script>
+            serverStatus(
+                function success(response) {
+                    console.log(response);
+                    $('#status').text(response.status)
+                }, 
+                function failure(response) {
+                    console.log("Connection error");
+                    $('#status').text("DOWN")
+                } 
+            );
+            pauseBoard(1,
+                function success(response) {
+                    console.log(response);
+                }, 
+                function failure(response) {
+                    console.log("Connection error");
+                } 
+            );
+        </script>
+    </body>
+</html>
