@@ -224,6 +224,29 @@ Content-Typeapplication/json
     }
 ]
 ```
+- Health check
+###### Description:
+Used to determine if the service is up. 
+```
+- METHOD
+GET
+- URL
+https://minesweeper-wat.herokuapp.com/actuator/health
+- HEADERS
+- BODY
+- SUCCESS RESPONSE CODE
+200
+- RESPONSE
+{
+  "status": "UP"
+}
+```
+
+# Javascript client
+/client/minesweeper-client.js
+
+# Heroku link
+https://minesweeper-wat.herokuapp.com
 
 # Notes
 ## Possible improvements
